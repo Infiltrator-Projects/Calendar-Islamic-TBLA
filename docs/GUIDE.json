@@ -1,0 +1,78 @@
+{
+  "title": "Islamic Tabular Calendar Astronomical Epoch",
+  "intro": "A mathematical Islamic lunar calendar that counts months using a fixed arithmetic scheme and an astronomical-era starting convention.",
+  "summary": "Twelve lunar months, usually alternating 30 and 29 days, with leap-year adjustments. It is not a calendar of actual crescent sightings.",
+  "origin": "The Islamic Hijri era begins in the seventh century. This particular tabular variant uses the astronomical Thursday epoch rather than the Friday civil epoch.",
+  "ring_label": "12",
+  "ring_caption": "MONTHS",
+  "diagram_title": "THE TABULAR LUNAR YEAR",
+  "structure": "A year has twelve lunar months. The arithmetic follows a repeating pattern and leap-cycle rules rather than observing each new moon.",
+  "diagram_caption": "12 MONTHS / ARITHMETICALLY COUNTED DAYS",
+  "sections": [
+    {
+      "name": "Muharram",
+      "days": "30",
+      "special": false
+    },
+    {
+      "name": "Safar",
+      "days": "29*",
+      "special": false
+    },
+    {
+      "name": "Rabi I",
+      "days": "30",
+      "special": false
+    },
+    {
+      "name": "Rabi II",
+      "days": "29*",
+      "special": false
+    },
+    {
+      "name": "Jumada I",
+      "days": "30",
+      "special": false
+    },
+    {
+      "name": "Jumada II",
+      "days": "29*",
+      "special": false
+    },
+    {
+      "name": "Rajab",
+      "days": "30",
+      "special": false
+    },
+    {
+      "name": "Shaban",
+      "days": "29*",
+      "special": false
+    },
+    {
+      "name": "Ramadan",
+      "days": "30",
+      "special": false
+    },
+    {
+      "name": "Shawwal",
+      "days": "29*",
+      "special": false
+    },
+    {
+      "name": "Dhu al-Qadah",
+      "days": "30",
+      "special": false
+    },
+    {
+      "name": "Dhu al-Hijjah",
+      "days": "29*",
+      "special": true
+    }
+  ],
+  "pattern_note": "The last month may gain a day in leap years. The asterisk denotes a length subject to the leap-cycle rule.",
+  "history": "Tabular Islamic calendars permit date calculations into the past and future without requiring a published observation. Other Hijri calendars may differ by a day or more.",
+  "example": "A computed date called 1 Muharram starts a new Hijri year in this model. An observation-based calendar can place the corresponding month boundary differently.",
+  "limits": "The Thursday astronomical epoch is different from the Islamic Civil variant. Tabular values are not guarantees of a locally sighted moon or a particular authority's religious date.",
+  "source": "https://github.com/Infiltrator-Projects/Calendar-Islamic-TBLA"
+}
