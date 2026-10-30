@@ -2,6 +2,8 @@
 /* Independently installed calendar. No Calendar application ABI is exported. */
 #include <infiltratr/core.h>
 #include <infiltratr/temporal_calendar.h>
+#include <glib.h>
+extern "C" {
 #include "calendar-engine-types.h"
 #include "calendar-arithmetic.h"
 #include "calendar-custom.h"
@@ -10,6 +12,7 @@
 #include "icu-calendar.h"
 #include "catalogue.h"
 #include "julian-day.h"
+}
 #include <string.h>
 
 typedef struct ResourceCalendar ResourceCalendar;
@@ -96,7 +99,7 @@ static bool fields(const InfiltratrTemporalCalendarProvider *self,
     if (result == NULL || !provider_jdn_supported(jdn) ||
         !native.fields_from_jdn(&native,jdn,&value))
         return false;
-    *result = (InfiltratrTemporalCalendarFields){
+    *result = InfiltratrTemporalCalendarFields{
         value.year, value.month, value.day, value.auxiliary, value.special != FALSE };
     return true;
 }
@@ -127,7 +130,8 @@ static bool start(const InfiltratrTemporalCalendarProvider *self,
     int64_t jdn, int64_t *result)
 {
     CalendarCalendarFields value;
-    if (result == NULL || !fields(self,jdn,&(InfiltratrTemporalCalendarFields){0}))
+    InfiltratrTemporalCalendarFields checked{};
+    if (result == NULL || !fields(self,jdn,&checked))
         return false;
     const int64_t candidate=native.period_start(&native,jdn);
     if (!provider_jdn_supported(candidate) ||
@@ -139,7 +143,8 @@ static bool navigate(const InfiltratrTemporalCalendarProvider *self,
     int64_t jdn,int32_t amount,int64_t *result,ResourceNavigateFunc operation)
 {
     CalendarCalendarFields value;
-    if (result == NULL || !fields(self,jdn,&(InfiltratrTemporalCalendarFields){0}))
+    InfiltratrTemporalCalendarFields checked{};
+    if (result == NULL || !fields(self,jdn,&checked))
         return false;
     const int64_t candidate=operation(&native,jdn,amount);
     if (!provider_jdn_supported(candidate) ||
@@ -168,7 +173,7 @@ static const InfiltratrTemporalCalendarProvider provider = {
 #else
 #define RESOURCE_EXPORT __attribute__((visibility("default")))
 #endif
-RESOURCE_EXPORT const InfiltratrTemporalResourceMetadata *infiltratr_temporal_resource_metadata_v1(void);
-RESOURCE_EXPORT const InfiltratrTemporalCalendarProvider *infiltratr_temporal_calendar_provider_v1(void);
-RESOURCE_EXPORT const InfiltratrTemporalResourceMetadata *infiltratr_temporal_resource_metadata_v1(void) { return &metadata; }
-RESOURCE_EXPORT const InfiltratrTemporalCalendarProvider *infiltratr_temporal_calendar_provider_v1(void) { return &provider; }
+extern "C" RESOURCE_EXPORT const InfiltratrTemporalResourceMetadata *infiltratr_temporal_resource_metadata_v1(void);
+extern "C" RESOURCE_EXPORT const InfiltratrTemporalCalendarProvider *infiltratr_temporal_calendar_provider_v1(void);
+extern "C" RESOURCE_EXPORT const InfiltratrTemporalResourceMetadata *infiltratr_temporal_resource_metadata_v1(void) { return &metadata; }
+extern "C" RESOURCE_EXPORT const InfiltratrTemporalCalendarProvider *infiltratr_temporal_calendar_provider_v1(void) { return &provider; }
