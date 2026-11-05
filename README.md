@@ -48,4 +48,4 @@ Each package owns only this provider and its passive documentation. Its `Replace
 
 ## Illustrated user guide
 
-The installed package contains exactly two provider files: `Islamic Tabular Calendar Astronomical Epoch.so` and `Islamic Tabular Calendar Astronomical Epoch.pdf`. Technical audits remain in GitHub and native build provenance is recorded in Debian control metadata.
+The installed package contains exactly two provider files: `Islamic Tabular Calendar Astronomical Epoch.so` and `Calendar-Islamic-TBLA.pdf`. Technical audits remain in GitHub and native build provenance is recorded in Debian control metadata.
