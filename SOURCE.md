@@ -7,12 +7,12 @@ This repository now contains its own implementation of provider `islamic-tbla`, 
 - **Source:** [Libraries/Common 1.19.78](https://github.com/Infiltrator-Projects/Libraries/tree/8d60662114e3052380f6f88ad3cacd9732ae7131).
 - **Source revision:** `8d60662114e3052380f6f88ad3cacd9732ae7131`.
 - **Original entry:** `resources/temporal/src/calendars/native-calendar.c`.
-- **Local entry:** `src/provider.c`.
+- **Local entry:** `src/provider.cpp`.
 - **Output:** `Islamic Tabular Calendar Astronomical Epoch.so`.
 - **Native resource path:** `/System/Resources/Calendars/Islamic Tabular Calendar Astronomical Epoch.so`.
 - **Original Common code:** retained unchanged. The original extraction was a copy, not a removal. Independent packaging now transfers only this installed module through dpkg; Common source remains retained.
 
-Combined source files were selected for this provider and split by keeping its existing operations, data and required helper definitions. Inactive provider branches and unreachable definitions were removed. Shared arithmetic, formatting, localization and runtime-bridge helpers are intentionally copied into every repository that needs them. The local build uses only this repository's source and platform dependencies; it does not fetch or link a Common checkout/archive.
+Combined source files were selected for this provider and split by keeping its existing operations, data and required helper definitions. Inactive provider branches and unreachable definitions were removed. Shared arithmetic, formatting, localization and runtime-bridge helpers are intentionally copied into every repository that needs them. The local build compiles this repository's provider source and links the pinned Common static archive. Initialise `common` explicitly with `git submodule update --init -- common`; the build does not fetch it.
 
 Public Common ABI headers retain compatibility declarations. Those declarations do not install or implement the other providers. The built module exports only its metadata entry and its `calendar` operation-table entry. Existing notices and the original GPL license are retained.
 
@@ -20,7 +20,7 @@ Public Common ABI headers retain compatibility declarations. Those declarations 
 
 ## Build and check
 
-Use a C11 compiler, GNU Make, Python 3 and pkg-config. Development packages required by this copy: glib-2.0, icu-i18n.
+Use C11 and C++17 compilers, GNU Make, pkg-config and the pinned Common submodule. Development packages required by this copy: glib-2.0, icu-i18n.
 
 ```sh
 make

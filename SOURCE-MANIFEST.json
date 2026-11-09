@@ -231,7 +231,7 @@
       ]
     },
     {
-      "path": "src/provider.c",
+      "path": "src/provider.cpp",
       "source_path": "resources/temporal/src/calendars/native-calendar.c",
       "source_sha256": "51c2e0ed1cca19eafd3c35652bd1ebb24716f253f4c65041280a3a32f06ab3f9",
       "copied_sha256": "fb74620194418d2c1d63852f27fea5282c055337005e68b1c3932d6e52b63df7",

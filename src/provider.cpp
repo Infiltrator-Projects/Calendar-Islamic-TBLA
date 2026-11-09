@@ -6,12 +6,7 @@
 extern "C" {
 #include "calendar-engine-types.h"
 #include "calendar-arithmetic.h"
-#include "calendar-custom.h"
-#include "calendar-historical.h"
-#include "calendar-swedish.h"
 #include "icu-calendar.h"
-#include "catalogue.h"
-#include "julian-day.h"
 }
 #include <string.h>
 
